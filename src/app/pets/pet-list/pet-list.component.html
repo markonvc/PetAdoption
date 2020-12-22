@@ -1,3 +1,39 @@
-<p>
-    TODO - implementirati prikaz ljubimaca
-</p>
+<div class="row">
+    <div class="col">
+       <label for="categoy">Category</label>
+       <select name="category" id="category" [(ngModel)]="parameters.filter.category" (change)="setCategory()">
+           <option value="">All</option>
+           <option value="cat">Cats</option>
+           <option value="dog">Dogs</option>
+           <option value="other">Other</option>
+       </select> 
+    </div>
+    <div class="col">
+        Sex:<span>&nbsp;</span><input type="radio" name="sex" id="any" value="" (change)="setCategory()"  [(ngModel)]="parameters.filter.sex"checked="checked" >
+        <label for="any">Any</label>
+
+        <input type="radio" name="sex" id="female" value="f" (change)="setCategory()" [(ngModel)]="parameters.filter.sex">
+        <label for="female">female</label>
+
+        <input type="radio" name="sex" id="male" value="m" (change)="setCategory()" [(ngModel)]="parameters.filter.sex">
+        <label for="male">male</label>
+
+     </div>
+     <div class="col">
+         <label for="sort">Sort by</label>
+         <select name="sort" id="sort" [(ngModel)]="parameters.sort" (change)="setCategory()">
+             <option value="name">Name</option>
+             <option value="size_kg">Size</option>
+         </select>
+     </div>
+</div>
+<div class="row">
+       <div class="col-3" *ngFor="let pet of pets.results" (click)="petDetails(pet._id)">
+           <img src="{{pet.image}}" alt="" width="100%" height="250px">
+           <p style="text-align: center;">{{pet.name}}</p>
+           <p>Category: {{pet.category}} &nbsp;&nbsp;&nbsp; {{pet.size_kg}}kg</p>
+           <p *ngIf="pet.sex == 'm'">Sex: Male</p>
+           <p *ngIf="pet.sex == 'f'">Sex: Female</p>
+       </div>    
+</div>
+

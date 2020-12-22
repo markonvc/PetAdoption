@@ -1,12 +1,51 @@
 <div class="row">
     <div class="col-6">
-        <p>
-            TODO - implementirati prikaz detalja ljubimca
-        </p>
+        <div class="row">
+            <img class="col-7" src="{{pet.image}}" alt="" width="100%">
+            <div class="col-5">
+                <h3>{{pet.name}}</h3>
+                <p>Category: {{pet.category}}</p>
+                <p *ngIf="pet.sex == 'm'">Sex: Male</p>
+                <p *ngIf="pet.sex == 'f'">Sex: Female</p>
+                <p>Size: {{pet.size_kg}}kg</p>
+            </div>    
+        </div>   
+
     </div>
     <div class="col-4">
-        <p>
-            TODO - impolementirati formu za usvajanje ljubimca
-        </p>
+        <form [formGroup]="adoptForm" (submit)="onSubmit()">
+            <div class="form-group row">
+                <label for="name" class="col-2 col-form-label">Name</label><br>
+                <div class="col-12">
+                    <input class="form-control" type="text" id="name"
+                        formControlName="name">
+                    
+                    <ngb-toast style="background-color: red;color: white;" *ngIf="adoptForm.controls.name.touched && adoptForm.controls.name.errors?.required" [autohide]="false">
+                        Name is reqired
+                     </ngb-toast>    
+        
+                </div>
+            </div>
+        
+            <div class="form-group row">
+                <label for="contact" class="col-2 col-form-label">Contact</label><br>
+                <div class="col-12">
+                    <input class="form-control" type="email" id="contact"
+                        formControlName="contact">
+
+                    <ngb-toast style="background-color: red;color: white;" *ngIf="adoptForm.controls.contact.touched && adoptForm.controls.contact.errors?.required" [autohide]="false">
+                        Contact is reqired
+                    </ngb-toast>  
+                </div>
+            </div>
+        
+          
+           <div class="form-group row float-right">
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit"
+                    [disabled]="adoptForm.invalid">Submit</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>

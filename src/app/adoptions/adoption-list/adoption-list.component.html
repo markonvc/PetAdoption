@@ -1,1 +1,8 @@
-<p>TODO - implementirati listu zahteva za usvajanje</p>
+<table class="table">
+    <thead>
+        <tr><th>Pet Id</th><th>Pet Name</th><th>Name</th><th>Contact</th></tr>
+    </thead>
+    <tbody *ngFor="let adopter of adopters.results">
+        <tr><td>{{adopter.petId}}</td><td>{{adopter.petName}}</td><td>{{adopter.name}}</td><td>{{adopter.contact}}</td><td><button type="button" class="btn btn-primary" (click)="aproveAdoption(adopter)">Approve</button></td></tr>
+    </tbody>
+</table>

@@ -10,6 +10,7 @@ import { HomeComponent } from './core/home/home.component';
 import { PetListComponent } from './pets/pet-list/pet-list.component';
 import { PetDetailsComponent } from './pets/pet-details/pet-details.component';
 import { AdoptionListComponent } from './adoptions/adoption-list/adoption-list.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,10 @@ import { AdoptionListComponent } from './adoptions/adoption-list/adoption-list.c
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
